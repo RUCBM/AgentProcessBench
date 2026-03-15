@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentProcessBench · Annotation Studio</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div id="loginOverlay" class="overlay" data-open="false">
+      <div class="modal">
+        <div class="modalTitle">Start annotating</div>
+        <div class="modalText muted small">
+          Enter your annotator name (it will be written to the exported JSONL to identify annotations). You will be asked
+          to confirm once per session.
+        </div>
+        <div class="modalRow">
+          <input id="loginName" placeholder="e.g., alice" />
+          <button id="loginStartBtn" class="btn btnPrimary">Start</button>
+        </div>
+        <label class="modalText muted small">
+          <input id="rememberAnnotator" type="checkbox" />
+          Remember my name (auto-fill next time; still requires clicking Start)
+        </label>
+        <div class="modalText muted small mono">
+          Shortcuts: j/k or ↑/↓ to move between assistant steps; 1/0/- to label; Save & Next to save and advance.
+        </div>
+      </div>
+    </div>
+
+    <header class="topbar">
+      <div class="row">
+        <div class="brand">AgentProcessBench <span class="brandSub muted">Annotation Studio</span></div>
+        <div class="spacer"></div>
+        <div class="field">
+          <label>Dataset</label>
+          <select id="datasetSelect"></select>
+        </div>
+        <div class="field">
+          <label>Annotator</label>
+          <input id="annotatorInput" placeholder="e.g., alice" />
+        </div>
+        <div class="field">
+          <label>Progress</label>
+          <div id="progressText" class="mono">-</div>
+        </div>
+      </div>
+      <div class="row row2">
+        <div class="field">
+          <label>Jump To</label>
+          <input id="jumpIndex" class="mono" placeholder="0" />
+          <button id="jumpBtn" class="btn">Go</button>
+        </div>
+        <div class="field">
+          <label>Current</label>
+          <div id="currentIndex" class="mono">-</div>
+        </div>
+        <div class="spacer"></div>
+        <button id="skipBtn" class="btn btnWarn">Skip</button>
+        <button id="saveBtn" class="btn">Save</button>
+        <button id="saveNextBtn" class="btn btnPrimary">Save & Next</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel left">
+        <div class="card">
+          <div class="cardTitle">Sample</div>
+          <div id="sampleMeta" class="mono small"></div>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Question / Task</div>
+          <div id="question" class="pre"></div>
+          <div id="taskDescription" class="pre muted"></div>
+        </div>
+        <details class="card" id="toolsPanel" open>
+          <summary class="cardTitle">Tool Docs</summary>
+          <div class="field toolsFilterRow">
+            <label>Filter</label>
+            <input id="toolsFilter" class="mono" placeholder="Filter by tool name / description" />
+          </div>
+          <div id="toolsDocs" class="toolsDocs"></div>
+        </details>
+        <div class="card">
+          <div class="cardTitle">Final Outcome</div>
+          <div class="labelRow">
+            <button class="pill" data-final="1">+1 Correct</button>
+            <button class="pill" data-final="0">0 Uncertain</button>
+            <button class="pill" data-final="-1">-1 Incorrect</button>
+          </div>
+          <div id="rewardHint" class="small muted"></div>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Notes</div>
+          <textarea id="comment" rows="6" placeholder="Optional: why correct/incorrect, edge cases, or annotation notes"></textarea>
+        </div>
+        <details class="card">
+          <summary class="cardTitle">Ground Truth / Reward Info</summary>
+          <pre id="groundTruth" class="pre"></pre>
+          <pre id="rewardInfo" class="pre"></pre>
+        </details>
+      </section>
+
+      <section class="panel right">
+        <div class="card">
+          <div class="cardTitle">Messages (step-level assistant labels)</div>
+          <div id="stepsNav" class="stepsNav"></div>
+          <div id="messages"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
