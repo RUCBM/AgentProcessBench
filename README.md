@@ -1,5 +1,12 @@
 # AgentProcessBench: Diagnosing Step-Level Process Quality in Tool-Using Agents
 
+<p align="center">
+  <a href="https://rucbm.github.io/AgentProcessBench-Homepage/"><img alt="Homepage" src="https://img.shields.io/badge/%F0%9F%8C%8D%20Homepage-2E8B57?style=for-the-badge" /></a>
+  <a href="https://huggingface.co/datasets/LulaCola/AgentProcessBench"><img alt="Dataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-F59E0B?style=for-the-badge" /></a>
+  <a href="https://arxiv.org/abs/2603.14465"><img alt="Paper" src="https://img.shields.io/badge/%F0%9F%93%91%20Paper-2563EB?style=for-the-badge" /></a>
+  <a href="https://github.com/RUCBM/AgentProcessBench/blob/main/README.md"><img alt="DOCUMENT" src="https://img.shields.io/badge/%F0%9F%93%96%20DOCUMENT-8B5CF6?style=for-the-badge" /></a>
+</p>
+
 ![Method](figs/Method.png)
 
 AgentProcessBench is a benchmark for **process-level evaluation of agent trajectories**.
